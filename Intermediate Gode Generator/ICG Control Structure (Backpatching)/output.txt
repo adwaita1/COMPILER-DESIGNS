@@ -1,0 +1,36 @@
+student@B4L0106:~/Backpatching$ flex cal.l
+student@B4L0106:~/Backpatching$ byacc -d cal.y
+byacc: 47 shift/reduce conflicts.
+student@B4L0106:~/Backpatching$ gcc lex.yy.c y.tab.c -ll
+student@B4L0106:~/Backpatching$ ./a.out
+Enter Input String:if a<=b a=a*b
+ICG
+Sr.No	op	arg1	arg2	res
+
+0	<=	a	b	goto(2)
+
+1				goto(4)
+
+2	*	a	b	t2
+
+3	=	t2	-	a
+
+student@B4L0106:~/Backpatching$ flex cal.l
+student@B4L0106:~/Backpatching$ byacc -d cal.y
+byacc: 23 shift/reduce conflicts.
+student@B4L0106:~/Backpatching$ gcc lex.yy.c y.tab.c -ll
+student@B4L0106:~/Backpatching$ ./a.out
+Enter Input String:if a==b a=a+b
+ICG
+Sr.No	op	arg1	arg2	res
+
+0	==	a	b	goto(2)
+
+1				goto(4)
+
+2	+	a	b	t2
+
+3	=	t2	-	a
+
+
+

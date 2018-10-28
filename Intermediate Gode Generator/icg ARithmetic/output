@@ -1,0 +1,37 @@
+OUTPUT ICG(SIMPLE EXPRESSIOn)
+
+student@B4L0106:~$ flex icg.l
+student@B4L0106:~$ byacc -d icg.y
+student@B4L0106:~$ gcc lex.yy.c y.tab.c -ll
+student@B4L0106:~$ ./a.out
+a=b+c*d
+	op	arg1	arg2	result
+	*	c		d		A
+	+	b		A		B
+	=	B		_		a
+				
+student@B4L0106:~/abc$ ./a.out 
+a=b
+	op	arg1	arg2	result
+	=	b		_		a
+				
+student@B4L0106:~/abc$ ./a.out 
+a=2+a*b
+	op	arg1	arg2	result
+	*	a		b		A
+	+	2		A		B
+	=	B		_		a
+				
+student@B4L0106:~/abc$ ./a.out 
+a+b*c
+Error	op	arg1	arg2	result
+				
+student@B4L0106:~/abc$ ./a.out 
+a=b*c/e+f+v
+	op	arg1	arg2	result
+	*	b		c		A
+	/	A		e		B
+	+	B		f		C
+	+	C		v		D
+	=	D		_		a
+
