@@ -1,0 +1,6 @@
+student@B4L0106:~/DAG$ g++ -std=c++0x DAG.cpp
+student@B4L0106:~/DAG$ cat inp.txt | ./a.out
+* b c d
++ a b e
+- e d a
+

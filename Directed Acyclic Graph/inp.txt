@@ -1,0 +1,5 @@
+4
+* b c d
++ a b e
+* b c z
+- e z a
